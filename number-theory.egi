@@ -1,0 +1,15 @@
+; Legendre symbol
+(define $legendre
+  (lambda [$a $p]
+    (let {[$res (modulo (power a (/ (- p 1) 2)) p)]}
+      (if (eq? res (- p 1)) -1 1))))
+
+; Jacobi symbol
+(define $jacobi
+  (lambda [$n $k]
+    (product (map (lambda [$p] (legendre n p))
+      (p-f k)))))
+
+(legendre 15 17)
+(legendre 15 13)
+(jacobi 12 13)
