@@ -10,6 +10,12 @@
     (product (map (lambda [$p] (legendre n p))
       (p-f k)))))
 
+; Sum of the distinct prime factors of a number
+(define $sum-divisors
+  (lambda $n
+    (sum (unique (p-f n)))))
+
 (legendre 15 17)
 (legendre 15 13)
 (jacobi 12 13)
+(sum-divisors 81)
