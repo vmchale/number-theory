@@ -4,6 +4,10 @@
     (let {[$res (modulo (power a (/ (- p 1) 2)) p)]}
       (if (eq? res (- p 1)) -1 1))))
 
+(define $radical
+  (lambda $n
+    (product (unique (p-f n)))))
+
 ; Jacobi symbol
 (define $jacobi
   (lambda [$n $k]
@@ -19,3 +23,4 @@
 (legendre 15 13)
 (jacobi 12 13)
 (sum-divisors 81)
+(radical 8)
