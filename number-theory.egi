@@ -4,6 +4,7 @@
     (let {[$res (modulo (power a (/ (- p 1) 2)) p)]}
       (if (eq? res (- p 1)) -1 1))))
 
+; Radical of an integer
 (define $radical
   (lambda $n
     (product (unique (p-f n)))))
