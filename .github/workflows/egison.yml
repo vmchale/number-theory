@@ -1,0 +1,20 @@
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: "actions/checkout@v1"
+      - uses: "actions/setup-haskell@v1"
+        with:
+          cabal-version: "3.0"
+          ghc-version: "8.8.1"
+      - name: "Install egison"
+        run: |
+          cabal update
+          cabal install egison
+      - name: "Check Egison files"
+        run: |
+          export PATH=$HOME/.cabal/bin:$PATH
+          egison --test number-theory.egi
+name: "Egison CI"
+on:
+  - push
