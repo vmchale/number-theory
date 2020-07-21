@@ -1,0 +1,31 @@
+; https://egison.readthedocs.io/en/latest/reference/migration-guide-for-new-syntax.html
+
+; Legendre symbol
+(define $legendre
+  (lambda [$a $p]
+    (let {[$res (modulo (power a (/ (- p 1) 2)) p)]}
+      (if (eq? res (- p 1)) -1 1))))
+
+; TODO: square roots in modular arithmetic? Chinese remainder theorem?
+
+; Radical of an integer
+(define $radical
+  (lambda $n
+    (product (unique (p-f n)))))
+
+; Jacobi symbol
+(define $jacobi
+  (lambda [$n $k]
+    (product (map (lambda [$p] (legendre n p))
+      (p-f k)))))
+
+; Sum of the distinct prime factors of a number
+(define $sum-divisors
+  (lambda $n
+    (sum (unique (p-f n)))))
+
+(legendre 15 17)
+(legendre 15 13)
+(jacobi 12 13)
+(sum-divisors 81)
+(radical 8)
