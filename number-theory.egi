@@ -1,12 +1,12 @@
-legendre a p :=
+def legendre a p :=
   let res := modulo (power a ((p - 1) / 2)) p
    in if res = p - 1 then -1 else 1
 
-radical n := product (unique (pF n))
+def radical n := product (unique (pF n))
 
-jacobi n k := product (map (\p -> legendre n p) (pF k))
+def jacobi n k := product (map (\p -> legendre n p) (pF k))
 
-sumDivisors n := sum (unique (pF n))
+def sumDivisors n := sum (unique (pF n))
 
 legendre 15 17
 
